@@ -13,6 +13,13 @@ const Display = ({ category, count }) => (
 const Statistics = ({ good, neutral, bad }) => {
   const sum = good + neutral + bad;
   const positivePercentage = good / sum * 100;
+  if (sum === 0) {
+    return (
+      <div>
+        <h2>Statistics</h2>
+        <p>No Feedback given</p>
+      </div>)
+  }
   return (
     <div>
       <h2>Statistics</h2>
