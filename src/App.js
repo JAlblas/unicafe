@@ -6,8 +6,11 @@ const Button = ({ handleClick, text }) => (
   </button>
 )
 
-const Display = ({ category, count }) => (
-  <p>{category}: {count}</p>
+const StatisticsLine = ({ text, value }) => (
+  <tr>
+    <td>{text}</td>
+    <td>{value}</td>
+  </tr>
 )
 
 const Statistics = ({ good, neutral, bad }) => {
@@ -23,12 +26,16 @@ const Statistics = ({ good, neutral, bad }) => {
   return (
     <div>
       <h2>Statistics</h2>
-      <Display category="good" count={good} />
-      <Display category="neutral" count={neutral} />
-      <Display category="bad" count={bad} />
-      <Display category="all" count={sum} />
-      <Display category="average" count={good - bad} />
-      <Display category="positive" count={!isFinite(positivePercentage) ? "-" : positivePercentage + "%"} />
+      <table>
+        <tbody>
+          <StatisticsLine text="good" value={good} />
+          <StatisticsLine text="neutral" value={neutral} />
+          <StatisticsLine text="bad" value={bad} />
+          <StatisticsLine text="all" value={sum} />
+          <StatisticsLine text="average" value={good - bad} />
+          <StatisticsLine text="positive" value={!isFinite(positivePercentage) ? "-" : positivePercentage + "%"} />
+        </tbody>
+      </table>
     </div>
   )
 }
